@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+<body>
+  <script>
+    class Rat {
+    constructor(name, weight, speed) {
+      this.name = name
+      this.weight = weight
+      this.speed = speed
+      this.status = "sống"
+    }
+  
+    kieu() {
+      console.log("chít, chít")
+    }
+  }
+  
+  class Cat {
+    constructor(name, weight, maxSpeed) {
+      this.name = name
+      this.weight = weight
+      this.maxSpeed = maxSpeed
+    }
+  
+    keu() {
+      console.log("meo meo")
+    }
+  
+    batChuot(rat) {
+      if (this.maxSpeed > rat.speed) {
+        console.log(`${this.name} đã bắt ${rat.name}`)
+        rat.status = "chết"
+        this.weight += rat.weight
+      } else {
+        console.log(`${this.name} không thể bắt ${rat.name} vì tốc độ quá nhanh`)
+      }
+    }
+  
+    anChuot(rat) {
+      if (rat.status === "sống") {
+        console.log(`${this.name} không thể ăn ${rat.name} vì nó còn sống`)
+      } else {
+        console.log(`${this.name} đã ăn ${rat.name}`)
+        this.weight += rat.weight
+      }
+    }
+  }
+  
+  let cat = new Cat("Mèo Tom", 5, 10)
+  let rat = new Rat("Chuột Jerry", 1, 8)
+  
+  cat.keu()
+  rat.keu()
+  
+  cat.batChuot(rat)
+  rat.keu()
+  cat.anChuot(rat)
+  
+  console.log(`Trọng lượng của ${cat.name} hiện tại là ${cat.weight} kg`)
+  
+  </script>
+</body>
+</html>
